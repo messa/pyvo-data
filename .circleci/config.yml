@@ -23,6 +23,7 @@ jobs:
                http://127.0.0.1:5000/ >/tmp/artifacts/wget.log 2>&1 || true
           ls -lah
           tail /tmp/artifacts/*.log
+          find 127.0.0.1:5000 -type f | xargs sed -i 's|http://fonts|https://fonts|g'
           mv -vi 127.0.0.1:5000/* /tmp/artifacts/
     - store_artifacts:
         path: /tmp/artifacts
