@@ -4,6 +4,7 @@ jobs:
     docker:
     - image: python:3.6-stretch
     steps:
+    - checkout
     - run: pwd
     - run: python3 -m venv ~/venv
     - run: ~/venv/bin/pip install -U pip wheel
