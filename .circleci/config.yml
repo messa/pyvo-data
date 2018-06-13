@@ -5,15 +5,13 @@ jobs:
     - image: python:3.6-stretch
     steps:
     - checkout
-    - run: pwd
     - run: python3 -m venv ~/venv
     - run: ~/venv/bin/pip install -U pip wheel
     - run: ~/venv/bin/pip install https://github.com/pyvec/pyvo.cz/archive/master.zip
     - run: ~/venv/bin/python -m pyvocz --help
-    - run: ls -lah
     - run: mkdir /tmp/artifacts
     - run:
-        name: python -m pyvoz + wget --mirror
+        name: python -m pyvocz + wget --mirror
         command: |
           set -x
           ~/venv/bin/python -m pyvocz --data=$PWD >/tmp/artifacts/app.log 2>&1 &
