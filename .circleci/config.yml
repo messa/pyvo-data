@@ -15,10 +15,11 @@ jobs:
     - run:
         name: Mirror
         command: |
-          ~/venv/bin/python -m pyvocz --data=$PWD >/tmp/artifacts/app.log &
+          ~/venv/bin/python -m pyvocz --data=$PWD >/tmp/artifacts/app.log 2>&1 &
           sleep 3
           cd /tmp
-          wget --progress=dot --mirror --adjust-extension --convert-links --reject-regex '/201[012345679]' http://127.0.0.1:5000/ >/tmp/artifacts/wget.log
+          wget --progress=dot --mirror --adjust-extension --convert-links --reject-regex '/201[012345679]' \
+               http://127.0.0.1:5000/ >/tmp/artifacts/wget.log 2>&1
           mv -vi 127.0.0.1:5000/* /tmp/artifacts/
     - store_artifacts:
         path: /tmp/artifacts
