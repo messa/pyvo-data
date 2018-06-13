@@ -6,3 +6,4 @@ for use in https://github.com/pyvec/pyvodb and http://pyvo.cz.
 [![Build Status](https://travis-ci.org/pyvec/pyvo-data.svg?branch=master)](https://travis-ci.org/pyvec/pyvo-data)
 
 test
+test
