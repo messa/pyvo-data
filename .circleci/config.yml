@@ -11,6 +11,10 @@ jobs:
     - run: ~/venv/bin/pip install https://github.com/pyvec/pyvo.cz/archive/master.zip
     - run: ~/venv/bin/python -m pyvocz --help
     - run: ls -lah
+    - run: |
+        ~/venv/bin/python -m pyvocz --data=$PWD & 
+        wget --progress=dot --mirror --adjust-extension --convert-links --reject-regex '/201[012345679]' http://127.0.0.1:5000/;
+        kill %1
     - run: mkdir /tmp/artifacts
     - run: date >> /tmp/artifacts/index.html
     - store_artifacts:
